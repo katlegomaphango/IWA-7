@@ -6,14 +6,19 @@ const sarahName = 'Sarah    '
 const sarahSurname = 'Kleinhans'
 const sarahBalance = '-4582.21000111'
 
-const divider = '----------------------------------'
+const divider = '\n----------------------------------\n'
 
 // Only change below this line
 
-const owed = parseInt('R' + leoBalance + sarahBalance)
-const leo = "{leoName} + {leoSurname} + \"Owed\" + \"R\" + {sarahBalance}"
-const sarah = "{leoName} + {surname} + \"Owed\" + \"R\" + {sarahBalance}"
-const total = "Total amount owed: "
-const result = leo + sarah + divider + divider + total + owed + divider
+const sarahBalanceNum = parseFloat(sarahBalance.replace('-', ''))
+const leoBalanceNum = parseFloat(leoBalance.replace('-', ''))
+
+console.log(sarahBalanceNum, leoBalanceNum)
+
+const owed = sarahBalanceNum + leoBalanceNum
+const leo = `\n${leoName} ${leoSurname} (Owed: R ${leoBalanceNum.toFixed(2)})`
+const sarah = `\n${sarahName} ${sarahSurname} (Owed: R ${sarahBalanceNum.toFixed(2)})\n\n`
+const total = `  Total amount owed: R ${owed.toLocaleString('en').replace(',', ' ')}`
+const result = leo + sarah + divider + total + divider
 
 console.log(result)
